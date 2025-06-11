@@ -10,14 +10,14 @@ app.use(express.json());
 app.use("/api/messages", messageRoutes);
 
 mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 module.exports = app;
 
 if (process.env.NODE_ENV !== "test") {
-    app.listen(puerto, () => {
-        console.log(`Servidor escuchando en puerto 5000`);
-    });
+  app.listen(5000, () => {
+    console.log(`Servidor escuchando en puerto 5000`);
+  });
 }
