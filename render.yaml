@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: message-logger-backend
+    env: docker
+    repo: https://github.com/lucianolop88/message-logger
+    region: oregon
+    plan: free
+    dockerfilePath: backend/Dockerfile
+    envVars:
+      - key: MONGO_URI
+        value: mongodb://mongo:27017/message_logger
+
+  - type: pserv
+    name: mongo
+    env: docker
+    repo: https://github.com/lucianolop88/message-logger
+    dockerfilePath: mongo/Dockerfile
+    startCommand: mongod
