@@ -6,13 +6,25 @@ services:
     region: oregon
     plan: free
     dockerfilePath: backend/Dockerfile
+    buildFilter:
+      paths:
+        - backend/**
     envVars:
       - key: MONGO_URI
-        value: mongodb://localhost:27017/message_logger
+        value: mongodb://mongo:27017/mensajes
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
 
   - type: pserv
     name: mongo
     env: docker
     repo: https://github.com/lucianolop88/message-logger
+    region: oregon
+    plan: free
     dockerfilePath: mongo/Dockerfile
     startCommand: mongod
+    buildFilter:
+      paths:
+        - mongo/**
