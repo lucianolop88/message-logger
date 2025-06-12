@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: frontend
+    env: docker
+    region: oregon
+    plan: free
+    dockerfilePath: ./Dockerfile
+    build:
+      args:
+        REACT_APP_API_URL: https://message-logger-1srq.onrender.com
+    envVars:
+      - key: NODE_ENV
+        value: production
