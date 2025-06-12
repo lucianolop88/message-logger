@@ -6,17 +6,20 @@ function App() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/messages")
+    fetch("https://message-logger-1srq.onrender.com/api/messages")
       .then((res) => res.json())
       .then(setMessages);
   }, []);
 
   const addMessage = async (text) => {
-    const res = await fetch("http://localhost:5000/api/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text }),
-    });
+    const res = await fetch(
+      "https://message-logger-1srq.onrender.com/api/messages",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+      }
+    );
     const newMsg = await res.json();
     setMessages([newMsg, ...messages]);
   };
