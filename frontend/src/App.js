@@ -4,22 +4,20 @@ import MessageList from "./MessageList";
 
 function App() {
   const [messages, setMessages] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    fetch("https://message-logger-1srq.onrender.com/api/messages")
+    fetch(`${API_URL}/api/messages`)
       .then((res) => res.json())
       .then(setMessages);
   }, []);
 
   const addMessage = async (text) => {
-    const res = await fetch(
-      "https://message-logger-1srq.onrender.com/api/messages",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text }),
-      }
-    );
+    const res = await fetch(`${API_URL}/api/messages`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }),
+    });
     const newMsg = await res.json();
     setMessages([newMsg, ...messages]);
   };
