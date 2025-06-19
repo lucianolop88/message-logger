@@ -11,3 +11,5 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: REACT_APP_API_URL
+        value: https://message-logger-9qkf.onrender.com
